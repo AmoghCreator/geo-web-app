@@ -18,7 +18,7 @@ function Weath(props) {
   const [weathId, setWeathId] = useState();
   const [temp, setTemp] = useState();
   const [city, setCity] = useState();
-  const [custCity, setCustCity] = useState(city);
+  const [custCity, setCustCity] = useState();
   const [vsrc, setVsrc] = useState(mist);
 
   var burl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=2484ed69af0a06f791fa57f3576401e6`;
@@ -35,6 +35,7 @@ function Weath(props) {
         setWeathId(response.data.weather[0].id);
         setTemp(response.data.main.temp - 273);
         setCity(response.data.name);
+        setCustCity(response.data.name);
         if (
           response.data.weather[0].id >= 700 &&
           response.data.weather[0].id < 800
@@ -97,7 +98,7 @@ function Weath(props) {
         )
           setVsrc(mist);
         if (
-          response.data.weather[0].id >= 804 &&
+          response.data.weather[0].id >= 800 &&
           response.data.weather[0].id < 900
         )
           setVsrc(clouds);
